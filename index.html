@@ -4,11 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Invisible “tab title” (useful for Google + bookmarks) -->
   <title>Musa &amp; Davide</title>
   <meta name="description" content="Musa & Davide — landing page con gallery e contatto WhatsApp." />
 
-  <!-- Optional (nice for sharing links) -->
   <meta property="og:title" content="Musa & Davide" />
   <meta property="og:description" content="Contattami su WhatsApp e guarda la gallery." />
   <meta property="og:type" content="website" />
@@ -25,7 +23,6 @@
       --radius: 14px;
     }
 
-    /* ====== WALLPAPER LOGO (faded, behind everything) ====== */
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
@@ -36,20 +33,20 @@
       content:"";
       position: fixed;
       inset: 0;
-      background-image: url("./logo.png");   /* wallpaper tile */
+      background-image: url("./logo.png");
       background-repeat: repeat;
       background-size: 180px auto;
       background-position: top left;
-      opacity: 0.10;                         /* makes wallpaper subtle */
+      opacity: 0.10;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ====== WHITE CENTER COLUMN ====== */
+    /* WHITE CENTER COLUMN */
     .page{
       position: relative;
       z-index: 1;
-      width: 820px;                 /* desktop column width */
+      width: 820px;
       margin: 0 auto;
       min-height: 100vh;
       background: var(--paper);
@@ -57,7 +54,6 @@
       padding: 46px 28px 70px;
     }
 
-    /* Make it fit smaller screens */
     @media (max-width: 860px){
       .page{
         width: 92vw;
@@ -66,7 +62,6 @@
       body::before{ background-size: 140px auto; }
     }
 
-    /* ====== SEO/Accessibility: hidden H1 (logo is the visible title) ====== */
     .sr-only{
       position:absolute;
       width:1px;
@@ -79,17 +74,18 @@
       border:0;
     }
 
-    /* ====== TOP LOGOS ====== */
+    /* ====== TOP LOGOS ======
+       Desktop logo now ADAPTS to the white banner (the .page column):
+       - width: 100% means it fills the column's available width
+       - max-width: 100% prevents overflow
+       - no transform scaling (so it truly fits the banner)
+    */
     .logo-desktop{
       display:block;
       margin: 0 auto 18px;
-      width: 100%;
-      max-width: 820px;            /* matches column */
-      height: auto;
-
-      /* makes it feel “bigger” even if PNG has padding */
-      transform: scale(1.12);
-      transform-origin: center top;
+      width: 100%;        /* adapts to the white banner width */
+      max-width: 100%;    /* never exceeds banner */
+      height: auto;       /* keep aspect ratio */
     }
 
     /* Mobile: two logos stacked */
@@ -113,7 +109,7 @@
       }
     }
 
-    /* ====== HERO (UX: short, scannable, CTA visible) ====== */
+    /* HERO */
     .hero{
       text-align:center;
       padding: 6px 0 12px;
@@ -126,7 +122,7 @@
       line-height: 1.5;
     }
 
-    /* ====== PRIMARY CONTACT CTA ====== */
+    /* PRIMARY CONTACT CTA */
     .cta{
       margin-top: 18px;
       display:flex;
@@ -139,13 +135,13 @@
       width: 100%;
       max-width: 520px;
       display:flex;
-      flex-direction: column; /* mobile: vertical */
+      flex-direction: column;
       gap: 12px;
     }
 
     @media (min-width: 768px){
       .cta .cta-row{
-        flex-direction: row; /* desktop: horizontal */
+        flex-direction: row;
       }
     }
 
@@ -188,7 +184,7 @@
       font-size: 0.95rem;
     }
 
-    /* ====== ABOUT (short, readable) ====== */
+    /* ABOUT */
     .about{
       margin-top: 28px;
       text-align:left;
@@ -215,7 +211,7 @@
       width: 100%;
     }
 
-    /* ====== GALLERY CAROUSEL (3 desktop / 1 mobile + arrows + swipe) ====== */
+    /* GALLERY CAROUSEL */
     .gallery h2{
       text-align:center;
       margin: 0 0 14px;
@@ -239,7 +235,6 @@
     .carousel-viewport::-webkit-scrollbar{ display:none; }
     .carousel-viewport{ scrollbar-width: none; }
 
-    /* Each slide: 3 visible on desktop */
     .slide{
       flex: 0 0 calc((100% - (2 * var(--gap))) / 3);
       scroll-snap-align: start;
@@ -249,7 +244,6 @@
       box-shadow: 0 6px 14px var(--shadow);
     }
 
-    /* Media inside slide: image + video same look */
     .slide img,
     .slide video.media{
       width:100%;
@@ -259,14 +253,12 @@
       background:#fff;
     }
 
-    /* Mobile: 1 visible */
     @media (max-width: 768px){
       .slide{ flex: 0 0 100%; }
       .slide img,
       .slide video.media{ height: 260px; }
     }
 
-    /* Arrow buttons */
     .carousel-btn{
       position:absolute;
       top: 50%;
@@ -295,7 +287,6 @@
       .carousel-btn.next{ right: 4px; }
     }
 
-    /* Footer small */
     footer{
       margin-top: 34px;
       text-align:center;
@@ -307,10 +298,9 @@
 
 <body>
   <main class="page">
-    <!-- Hidden H1 for SEO -->
     <h1 class="sr-only">Musa &amp; Davide</h1>
 
-    <!-- Visible logos -->
+    <!-- Desktop logo adapts to the white banner width -->
     <img src="./logo.png" class="logo-desktop" alt="Musa &amp; Davide">
 
     <div class="logo-mobile-wrap" aria-label="Musa & Davide">
@@ -318,37 +308,25 @@
       <img src="./logoMobile1.png" alt="">
     </div>
 
-    <!-- HERO -->
     <section class="hero">
-      <p>
-        Scrivimi direttamente su WhatsApp per informazioni e disponibilità.
-      </p>
+      <p>Scrivimi direttamente su WhatsApp per informazioni e disponibilità.</p>
 
-      <!-- UX: CTA visible early -->
       <div class="cta">
         <div class="cta-row">
-          <!-- CHANGE THIS NUMBER -->
           <a class="btn btn-primary" href="https://wa.me/393471234567" target="_blank" rel="noopener">
-            <!-- Put whatsapp.svg (or whatsapp.png) next to index.html -->
             <img class="contact-icon" src="./whatsapp.svg" alt="" aria-hidden="true">
             <span>WhatsApp</span>
           </a>
 
-          <!-- Placeholder for future socials (you can replace later) -->
-          <a class="btn btn-secondary" href="#gallery">
-            Vai alla gallery
-          </a>
+          <a class="btn btn-secondary" href="#gallery">Vai alla gallery</a>
         </div>
 
-        <div class="microcopy">
-          (Messaggio vuoto: si apre la chat e scrivi tu.)
-        </div>
+        <div class="microcopy">(Messaggio vuoto: si apre la chat e scrivi tu.)</div>
       </div>
     </section>
 
     <hr class="divider">
 
-    <!-- ABOUT (shorter paragraphs = easier to read) -->
     <section class="about" id="about">
       <h2>Chi siamo</h2>
       <p>
@@ -362,7 +340,6 @@
 
     <hr class="divider">
 
-    <!-- GALLERY -->
     <section class="gallery" id="gallery">
       <h2>Gallery</h2>
 
@@ -370,13 +347,10 @@
         <button class="carousel-btn prev" type="button" aria-label="Contenuto precedente" data-prev>‹</button>
 
         <div class="carousel-viewport" data-viewport>
-          <!-- Put files in your repo next to index.html (or in ./gallery/ and change paths). -->
-
           <div class="slide"><img src="./gallery/photo1.jpg" alt="Foto 1"></div>
           <div class="slide"><img src="./gallery/photo2.jpg" alt="Foto 2"></div>
           <div class="slide"><img src="./gallery/photo3.jpg" alt="Foto 3"></div>
 
-          <!-- Video example (no controls, always muted) -->
           <div class="slide">
             <video class="media" autoplay muted loop playsinline preload="metadata">
               <source src="./gallery/video1.mp4" type="video/mp4">
@@ -405,7 +379,6 @@
   </main>
 
   <script>
-    // Carousel arrows (swipe works automatically because viewport is overflow-x:auto)
     (function () {
       const carousel = document.querySelector('[data-carousel]');
       if (!carousel) return;
@@ -446,7 +419,6 @@
       updateButtons();
     })();
 
-    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
