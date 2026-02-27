@@ -293,7 +293,7 @@
       color: var(--muted);
       font-size: 0.9rem;
         }
-    .tariffs{
+   .tariffs{
   margin-top: 14px;
   border: 1px solid rgba(0,0,0,0.12);
   border-radius: 12px;
@@ -301,22 +301,39 @@
   background: #fff;
 }
 
+/* Desktop/tablet: 2 colonne (testo | prezzo) */
 .tariff-item{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
   gap: 12px;
   padding: 12px 14px;
   border-top: 1px solid rgba(0,0,0,0.12);
-  font-weight: 700; /* bold line */
+  font-weight: 700;
 }
 
-.tariff-item:first-child{
-  border-top: none;
+.tariff-item:first-child{ border-top: none; }
+
+/* fa andare a capo i testi lunghi invece di “spaccare” il layout */
+.tariff-item strong{
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .tariff-item span{
-  font-weight: 800; /* price a bit bolder */
+  font-weight: 800;
   white-space: nowrap;
+  justify-self: end;
+}
+
+/* Mobile: servizio sopra, prezzo sotto */
+@media (max-width: 768px){
+  .tariff-item{
+    grid-template-columns: 1fr;
+  }
+  .tariff-item span{
+    justify-self: start;
+  }
 }
   </style>
 </head>
@@ -454,6 +471,7 @@
   </script>
 </body>
 </html>
+
 
 
 
