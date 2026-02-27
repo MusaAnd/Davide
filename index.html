@@ -292,7 +292,32 @@
       text-align:center;
       color: var(--muted);
       font-size: 0.9rem;
-    }
+        }
+    .tariffs{
+  margin-top: 14px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.tariff-item{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  font-weight: 700; /* bold line */
+}
+
+.tariff-item:first-child{
+  border-top: none;
+}
+
+.tariff-item span{
+  font-weight: 800; /* price a bit bolder */
+  white-space: nowrap;
+}
   </style>
 </head>
 
@@ -333,11 +358,13 @@
         With love and attention to the dog's individual needs
       </p>
       <p>
-an hour walk: 15 Euros
-two hours walk/veterinary appointment: 30 Euros
-one time 3 hour walk and run in Grünewald (I take the U-bahn to Onkel Toms Hütte and walk from there): 100 Euros
-4 x Month walk and run in Grünewald: 300 Euros
-24 hours hosting: 30 euros
+<div class="tariffs">
+  <div class="tariff-item"><strong>1 hour walk</strong><span>15 €</span></div>
+  <div class="tariff-item"><strong>2 hours walk / veterinary appointment</strong><span>30 €</span></div>
+  <div class="tariff-item"><strong>One-time 3h walk & run in Grünewald</strong><span>100 €</span></div>
+  <div class="tariff-item"><strong>4× month walk & run in Grünewald</strong><span>300 €</span></div>
+  <div class="tariff-item"><strong>24 hours hosting</strong><span>30 €</span></div>
+</div>
         
       </p>
     </section>
@@ -427,6 +454,7 @@ one time 3 hour walk and run in Grünewald (I take the U-bahn to Onkel Toms Hüt
   </script>
 </body>
 </html>
+
 
 
 
